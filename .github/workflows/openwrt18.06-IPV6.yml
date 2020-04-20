@@ -60,7 +60,10 @@ jobs:
            tar   xvJf  autocore.tar.xz
            tar   xvJf  luci-app-nps.tar.xz
            tar   xvJf  luci-app-adbyby-plus.tar.xz
-           tar   xvJf  luci-app-vssr-plus.tar.xz
+           tar   xvJf  luci-app-firefly.tar.xz
+           tar   xvJf  luci-app-ssr-plus-lean.tar.xz
+           tar   xvJf   luci-app-airplay2.tar.xz
+           tar   xvJf   luci-app-music-remote-center.tar.xz
            git clone  https://github.com/Sweet-Fairy/openwrt-package
            git clone  https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker
            git clone  https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman  
@@ -175,6 +178,9 @@ jobs:
             CONFIG_PACKAGE_luci-app-usb-printer=y
             CONFIG_PACKAGE_luci-app-onliner=y
             CONFIG_PACKAGE_luci-app-nps=y
+            CONFIG_PACKAGE_luci-app-music-remote-center=y
+            CONFIG_PACKAGE_luci-app-airplay2=y
+            CONFIG_PACKAGE_luci-app-nft-qos=y
             CONFIG_PACKAGE_luci-app-cpulimit=y
             CONFIG_PACKAGE_luci-app-netdata=y
             CONFIG_PACKAGE_luci-app-cupsd=y
@@ -188,8 +194,8 @@ jobs:
           # CONFIG_PACKAGE_kmod-tcp-bbr-mod=y
             CONFIG_PACKAGE_kmod-tcp-bbr-nanqinlang=y
             CONFIG_PACKAGE_luci-app-passwall=y 
-            CONFIG_PACKAGE_luci-app-vssr-plus=y
-            CONFIG_PACKAGE_luci-app-ssr-plus=y
+            CONFIG_PACKAGE_luci-app-firefly=y
+            CONFIG_PACKAGE_luci-app-ssr-plus-lean=y
             CONFIG_PACKAGE_luci-app-advanced-reboot=y
             CONFIG_PACKAGE_luci-app-amule=y
             CONFIG_PACKAGE_luci-app-appfilter=y
@@ -234,6 +240,7 @@ jobs:
             CONFIG_PACKAGE_luci-theme-opentomato=y
             CONFIG_PACKAGE_luci-theme-argon-mod=y
             CONFIG_PACKAGE_luci-theme-tomato=y
+            CONFIG_PACKAGE_luci-theme-luci-theme-argon=y
       
            EOF
           # 常用软件包:

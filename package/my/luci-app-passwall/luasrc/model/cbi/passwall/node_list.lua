@@ -9,22 +9,22 @@ m = Map(appname)
 m:append(Template("passwall/global/status1"))
 
 -- [[ Node List ]]--
-s = m:section(TypedSection, "nodes")
+s = m:section(TypedSection, "nodes",translate("Node List"))
 -- s.description = translate("Support for more than 10,000 ping nodes and luci does not crash and not slow.")
 s.anonymous = true
 s.addremove = true
 s.template = "cbi/tblsection"
-s.extedit = d.build_url("admin", "vpn", "passwall", "node_config", "%s")
+s.extedit = d.build_url("admin", "Internet", "passwall", "node_config", "%s")
 function s.create(e, t)
     local e = TypedSection.create(e, t)
     luci.http
-        .redirect(d.build_url("admin", "vpn", "passwall", "node_config", e))
+        .redirect(d.build_url("admin", "Internet", "passwall", "node_config", e))
 end
 
 function s.remove(t, a)
     s.map.proceed = true
     s.map:del(a)
-    luci.http.redirect(d.build_url("admin", "vpn", "passwall", "node_list"))
+    luci.http.redirect(d.build_url("admin", "Internet", "passwall", "node_list"))
 end
 
 if api.uci_get_type("global_other", "show_group", "1") == "1" then
