@@ -49,7 +49,7 @@ jobs:
           # ln -s /mnt/openwrt/feeds ./feeds
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
           df -h
-      - name: 自定义插件
+      - name: Custom plugin
         run: |
            rm    -rfv  package/lean/autocore
            rm    -rfv  package/lean/luci-app-adbyby-plus
@@ -60,7 +60,11 @@ jobs:
            tar   xvJf  autocore.tar.xz
            tar   xvJf  luci-app-nps.tar.xz
            tar   xvJf  luci-app-adbyby-plus.tar.xz
+           tar   xvJf  luci-app-firefly.tar.xz
+           tar   xvJf  luci-app-ssr-plus-lean.tar.xz
            tar   xvJf  luci-app-vssr-plus.tar.xz
+           tar   xvJf   luci-app-airplay2.tar.xz
+           tar   xvJf   luci-app-music-remote-center.tar.xz
            git clone  https://github.com/Sweet-Fairy/openwrt-package  
            git clone  https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker
            git clone  https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman  
@@ -143,77 +147,81 @@ jobs:
           # 常用LuCI插件选择:
            cat >> .config <<EOF
             CONFIG_PACKAGE_luci-app-adbyby-plus=y
-            CONFIG_PACKAGE_luci-app-aria2=y
-            CONFIG_PACKAGE_luci-app-baidupcs-web=y
+          # CONFIG_PACKAGE_luci-app-aria2=y
+          # CONFIG_PACKAGE_luci-app-baidupcs-web=y
           # CONFIG_PACKAGE_luci-app-docker=y
-          # CONFIG_PACKAGE_luci-lib-docker=y
-          # CONFIG_PACKAGE_luci-app-dockerman=y
+            CONFIG_PACKAGE_luci-lib-docker=y
+            CONFIG_PACKAGE_luci-app-dockerman=y
             CONFIG_PACKAGE_luci-app-diskman=y
-            CONFIG_PACKAGE_luci-app-aliddns=y
+          # CONFIG_PACKAGE_luci-app-aliddns=y
             CONFIG_PACKAGE_luci-app-rclone=y
             CONFIG_PACKAGE_luci-app-frpc=y
-            CONFIG_PACKAGE_luci-app-koolddns=y
-            CONFIG_PACKAGE_luci-app-kodexplorer=y
-            CONFIG_PACKAGE_luci-app-minidlna=y
-            CONFIG_PACKAGE_luci-app-openvpn=y
-            CONFIG_PACKAGE_luci-app-openvpn-server=y
+          # CONFIG_PACKAGE_luci-app-koolddns=y
+          # CONFIG_PACKAGE_luci-app-kodexplorer=y
+          # CONFIG_PACKAGE_luci-app-minidlna=y
+          # CONFIG_PACKAGE_luci-app-openvpn=y
+          # CONFIG_PACKAGE_luci-app-openvpn-server=y
             CONFIG_PACKAGE_luci-app-qbittorrent=y
-            CONFIG_PACKAGE_luci-app-trojan-server=y
-            CONFIG_PACKAGE_luci-app-familycloud=y
-            CONFIG_PACKAGE_luci-app-smartinfo=y
-            CONFIG_PACKAGE_luci-app-syncthing=y
-            CONFIG_PACKAGE_luci-app-syncdial=y
-            CONFIG_PACKAGE_luci-app-ttyd=y
-            CONFIG_PACKAGE_luci-app-mwan3=y
-            CONFIG_PACKAGE_luci-app-mwan3helper=y
-            CONFIG_PACKAGE_luci-app-openclash=y
+          # CONFIG_PACKAGE_luci-app-trojan-server=y
+          # CONFIG_PACKAGE_luci-app-familycloud=y
+          # CONFIG_PACKAGE_luci-app-smartinfo=y
+          # CONFIG_PACKAGE_luci-app-syncthing=y
+          # CONFIG_PACKAGE_luci-app-syncdial=y
+          # CONFIG_PACKAGE_luci-app-ttyd=y
+          # CONFIG_PACKAGE_luci-app-mwan3=y
+          # CONFIG_PACKAGE_luci-app-mwan3helper=y
+          # CONFIG_PACKAGE_luci-app-openclash=y
             CONFIG_PACKAGE_luci-app-v2ray-server=y
-            CONFIG_PACKAGE_luci-app-verysync=y
-            CONFIG_PACKAGE_luci-app-webadmin=y
-            CONFIG_PACKAGE_luci-app-udpxy=y
-            CONFIG_PACKAGE_luci-app-serverchan=y
-            CONFIG_PACKAGE_luci-app-usb-printer=y
-            CONFIG_PACKAGE_luci-app-onliner=y
-            CONFIG_PACKAGE_luci-app-nps=y
-            CONFIG_PACKAGE_luci-app-cpulimit=y
-            CONFIG_PACKAGE_luci-app-netdata=y
-            CONFIG_PACKAGE_luci-app-cupsd=y
+          # CONFIG_PACKAGE_luci-app-verysync=y
+          # CONFIG_PACKAGE_luci-app-webadmin=y
+          # CONFIG_PACKAGE_luci-app-udpxy=y
+          # CONFIG_PACKAGE_luci-app-serverchan=y
+          # CONFIG_PACKAGE_luci-app-usb-printer=y
+          # CONFIG_PACKAGE_luci-app-onliner=y
+          # CONFIG_PACKAGE_luci-app-nps=y
+          # CONFIG_PACKAGE_luci-app-cpulimit=y
+          # CONFIG_PACKAGE_luci-app-netdata=y
+          # CONFIG_PACKAGE_luci-app-cupsd=y
             CONFIG_PACKAGE_luci-app-unblockmusic=y
-            CONFIG_PACKAGE_luci-app-qos=y
-            CONFIG_PACKAGE_luci-app-advancedsetting=y
-            CONFIG_PACKAGE_luci-app-clash=y
-            CONFIG_PACKAGE_luci-app-qosv4=y
+          # CONFIG_PACKAGE_luci-app-qos=y
+          # CONFIG_PACKAGE_luci-app-music-remote-center=y
+          # CONFIG_PACKAGE_luci-app-airplay2=y
+          # CONFIG_PACKAGE_luci-app-nft-qos=y
+          # CONFIG_PACKAGE_luci-app-advancedsetting=y
+          # CONFIG_PACKAGE_luci-app-clash=y
+          # CONFIG_PACKAGE_luci-app-qosv4=y
             CONFIG_PACKAGE_luci-app-samba=y
-            CONFIG_PACKAGE_luci-app-smartdns=y
+          # CONFIG_PACKAGE_luci-app-smartdns=y
           # CONFIG_PACKAGE_kmod-tcp-bbr-mod=y
             CONFIG_PACKAGE_kmod-tcp-bbr-nanqinlang=y
             CONFIG_PACKAGE_luci-app-passwall=y 
+          # CONFIG_PACKAGE_luci-app-firefly=y
+            CONFIG_PACKAGE_luci-app-ssr-plus-lean=y
             CONFIG_PACKAGE_luci-app-vssr-plus=y
-            CONFIG_PACKAGE_luci-app-ssr-plus=y
-            CONFIG_PACKAGE_luci-app-advanced-reboot=y
-            CONFIG_PACKAGE_luci-app-amule=y
-            CONFIG_PACKAGE_luci-app-appfilter=y
-            CONFIG_PACKAGE_luci-app-adblock=y
+          # CONFIG_PACKAGE_luci-app-advanced-reboot=y
+          # CONFIG_PACKAGE_luci-app-amule=y
+          # CONFIG_PACKAGE_luci-app-appfilter=y
+          # CONFIG_PACKAGE_luci-app-adblock=y
           # CONFIG_PACKAGE_luci-app-cd8021x=y
-            CONFIG_PACKAGE_luci-app-chinadns=y
-            CONFIG_PACKAGE_luci-app-cifs=y
-            CONFIG_PACKAGE_luci-app-cifsd=y
+          # CONFIG_PACKAGE_luci-app-chinadns=y
+          # CONFIG_PACKAGE_luci-app-cifs=y
+          # CONFIG_PACKAGE_luci-app-cifsd=y
           # CONFIG_PACKAGE_luci-app-banip=y
-            CONFIG_PACKAGE_luci-app-brook-server=y
+          # CONFIG_PACKAGE_luci-app-brook-server=y
           # CONFIG_PACKAGE_luci-app-commands=y
-            CONFIG_PACKAGE_luci-app-control-mia=y
-            CONFIG_PACKAGE_luci-app-control-timewol=y
-            CONFIG_PACKAGE_luci-app-control-webrestriction=y
-            CONFIG_PACKAGE_luci-app-control-weburl=y
-            CONFIG_PACKAGE_luci-app-dnspod=y
-            CONFIG_PACKAGE_luci-app-cpufreq=y
-            CONFIG_PACKAGE_luci-app-filebrowser=y
-            CONFIG_PACKAGE_luci-app-fileassistant=y
-            CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+          # CONFIG_PACKAGE_luci-app-control-mia=y
+          # CONFIG_PACKAGE_luci-app-control-timewol=y
+          # CONFIG_PACKAGE_luci-app-control-webrestriction=y
+          # CONFIG_PACKAGE_luci-app-control-weburl=y
+          # CONFIG_PACKAGE_luci-app-dnspod=y
+          # CONFIG_PACKAGE_luci-app-cpufreq=y
+          # CONFIG_PACKAGE_luci-app-filebrowser=y
+          # CONFIG_PACKAGE_luci-app-fileassistant=y
+          # CONFIG_PACKAGE_luci-app-haproxy-tcp=y
           # CONFIG_PACKAGE_luci-app-mentohust=y
-            CONFIG_PACKAGE_luci-app-mjpg-streamer=y
+          # CONFIG_PACKAGE_luci-app-mjpg-streamer=y
           # CONFIG_PACKAGE_luci-app-n2n_v2=y
-            CONFIG_PACKAGE_luci-app-nfs=y
+          # CONFIG_PACKAGE_luci-app-nfs=y
           # CONFIG_PACKAGE_luci-app-ocserv=y
           # CONFIG_PACKAGE_luci-app-oscam=y
           # CONFIG_PACKAGE_luci-app-samba4=y
@@ -228,12 +236,13 @@ jobs:
            EOF
           # LuCI主题:
            cat >> .config <<EOF
-            CONFIG_PACKAGE_luci-theme-Butterfly=y
-            CONFIG_PACKAGE_luci-theme-Butterfly-dark=y
-            CONFIG_PACKAGE_luci-theme-opentomcat=y
-            CONFIG_PACKAGE_luci-theme-opentomato=y
+          # CONFIG_PACKAGE_luci-theme-Butterfly=y
+          # CONFIG_PACKAGE_luci-theme-Butterfly-dark=y
+          # CONFIG_PACKAGE_luci-theme-opentomcat=y
+          # CONFIG_PACKAGE_luci-theme-opentomato=y
             CONFIG_PACKAGE_luci-theme-argon-mod=y
-            CONFIG_PACKAGE_luci-theme-tomato=y
+          # CONFIG_PACKAGE_luci-theme-tomato=y
+          # CONFIG_PACKAGE_luci-theme-argon=y
          
            EOF
           # 常用软件包:
