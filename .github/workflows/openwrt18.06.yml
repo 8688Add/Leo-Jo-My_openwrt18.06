@@ -109,15 +109,15 @@ jobs:
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
           # 编译x64固件:
-           cat >> .config <<EOF
-           CONFIG_TARGET_x86=y
-           CONFIG_TARGET_x86_64=y
-           CONFIG_TARGET_x86_64_Generic=y
+            cat >> .config <<EOF
+            CONFIG_TARGET_x86=y
+            CONFIG_TARGET_x86_64=y
+            CONFIG_TARGET_x86_64_Generic=y
            EOF
           # 固件压缩:
-          #  cat >> .config <<EOF
-          #  CONFIG_TARGET_IMAGES_GZIP=y
-          #  EOF
+            cat >> .config <<EOF
+            CONFIG_TARGET_IMAGES_GZIP=y
+            EOF
           # 编译UEFI固件:
             cat >> .config <<EOF
             CONFIG_EFI_IMAGES=y
@@ -137,15 +137,15 @@ jobs:
           # CONFIG_PACKAGE_kmod-fs-squashfs=y
           # EOF
           # USB3.0支持:
-           cat >> .config <<EOF
-           CONFIG_PACKAGE_kmod-usb-ohci=y
-           CONFIG_PACKAGE_kmod-usb-ohci-pci=y
-           CONFIG_PACKAGE_kmod-usb2=y
-           CONFIG_PACKAGE_kmod-usb2-pci=y
-           CONFIG_PACKAGE_kmod-usb3=y
+            cat >> .config <<EOF
+            CONFIG_PACKAGE_kmod-usb-ohci=y
+            CONFIG_PACKAGE_kmod-usb-ohci-pci=y
+            CONFIG_PACKAGE_kmod-usb2=y
+            CONFIG_PACKAGE_kmod-usb2-pci=y
+            CONFIG_PACKAGE_kmod-usb3=y
           EOF
           # 常用LuCI插件选择:
-           cat >> .config <<EOF
+            cat >> .config <<EOF
             CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
@@ -239,7 +239,7 @@ jobs:
           # CONFIG_PACKAGE_luci-theme-Butterfly=y
           # CONFIG_PACKAGE_luci-theme-Butterfly-dark=y
           # CONFIG_PACKAGE_luci-theme-opentomcat=y
-          # CONFIG_PACKAGE_luci-theme-opentomato=y
+            CONFIG_PACKAGE_luci-theme-opentomato=y
             CONFIG_PACKAGE_luci-theme-argon-mod=y
           # CONFIG_PACKAGE_luci-theme-tomato=y
           # CONFIG_PACKAGE_luci-theme-argon=y
